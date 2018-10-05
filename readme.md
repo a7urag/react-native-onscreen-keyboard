@@ -4,18 +4,21 @@
 # Usage
 
 ### Import
-*import OnScreenKeyboard from 'react-native-onscreen-keyboard';*
+```
+import OnScreenKeyboard from 'react-native-onscreen-keyboard';
+```
 
 ### Usage
-*
-<VirtualKeyboard
+```
+<OnScreenKeyboard
     onPress={(input) => {
         this.setState({
             productName: input,
         });
     }}
     input={productName}
-/>*
+/>
+```
 
 # Props
 #### onPress(input)

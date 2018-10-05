@@ -1,6 +1,6 @@
 {
   "name": "react-native-onscreen-keyboard",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Component to add onscreen keyboard in react native app",
   "main": "index.js",
   "scripts": {
