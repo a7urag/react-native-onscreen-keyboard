@@ -1,6 +1,8 @@
 # Getting started
-* npm install react-native-onscreen-keyboard --save
-
+##Installation
+```
+npm install react-native-onscreen-keyboard --save
+```
 # Usage
 
 ### Import
@@ -13,24 +15,24 @@ import OnScreenKeyboard from 'react-native-onscreen-keyboard';
 <OnScreenKeyboard
     onPress={(input) => {
         this.setState({
-            productName: input,
+            keyboardInput: input,
         });
     }}
-    input={productName}
+    input={keyboardInput}
 />
 ```
 
 # Props
-#### onPress(input)
+##### onPress(input)
 Returns input on button press
 
-#### input
+##### input
 Initial/Updated input text
 
-#### onSubmit
+##### onSubmit
 Returns submit button press
 
-### submitText
+##### submitText
 Sets submit key label
 
 

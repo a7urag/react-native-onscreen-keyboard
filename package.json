@@ -2,7 +2,7 @@
   "name": "react-native-onscreen-keyboard",
   "version": "1.0.1",
   "description": "Component to add onscreen keyboard in react native app",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "flow": "flow"
@@ -24,9 +24,14 @@
     "react-native": "^0.57.2"
   },
   "devDependencies": {
+    "@babel/preset-typescript": "^7.1.0",
+    "@types/react": "^16.8.1",
+    "@types/react-native": "^0.57.32",
     "babel-cli": "^6.26.0",
     "babel-preset-flow": "^6.23.0",
     "flow": "^0.2.3",
-    "flow-bin": "^0.33.0"
+    "flow-bin": "^0.33.0",
+    "react-native-typescript-transformer": "^1.2.11",
+    "typescript": "^3.3.1"
   }
 }
