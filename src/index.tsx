@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-    View, Text, StyleSheet, TouchableOpacity
+    View, Text, TouchableOpacity
 } from 'react-native';
 
 import stylesLightAndroid from './styles/light.android'
@@ -37,7 +37,7 @@ interface KeyValue {
 
 let styles = stylesLightAndroid;
 
-export class OnScreenKeyboard extends React.Component<Props, State> {
+export default class OnScreenKeyboard extends React.Component<Props, State> {
     constructor(props: Props) {
         super(props);
         this.state = {

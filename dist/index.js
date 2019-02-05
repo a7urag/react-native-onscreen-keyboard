@@ -1,26 +1,13 @@
 "use strict";
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var react_1 = __importDefault(require("react"));
-var react_native_1 = require("react-native");
-var light_android_1 = __importDefault(require("./styles/light.android"));
-var languages_1 = __importDefault(require("./languages"));
-var keys = [
+const react_1 = __importDefault(require("react"));
+const react_native_1 = require("react-native");
+const light_android_1 = __importDefault(require("./styles/light.android"));
+const languages_1 = __importDefault(require("./languages"));
+const keys = [
     ['numeric_1', 'numeric_2', 'numeric_3', 'numeric_4', 'numeric_5', 'numeric_6', 'numeric_7', 'numeric_8', 'numeric_9', 'numeric_0'],
     // ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'],
     ['row1_0', 'row1_1', 'row1_2', 'row1_3', 'row1_4', 'row1_5', 'row1_6', 'row1_7', 'row1_8', 'row1_9'],
@@ -31,29 +18,28 @@ var keys = [
     // ['shift', 'z', 'x', 'c', 'v', 'b', 'n', 'm', 'back'],
     ['spcl_0', 'spcl_1', 'spcl_space', 'spcl_2', 'spcl_submit'],
 ];
-var styles = light_android_1.default;
-var OnScreenKeyboard = /** @class */ (function (_super) {
-    __extends(OnScreenKeyboard, _super);
-    function OnScreenKeyboard(props) {
-        var _this = _super.call(this, props) || this;
-        _this.toggleCapsLock = function () {
-            var capsLockOn = _this.state.capsLockOn;
-            _this.setState({
+let styles = light_android_1.default;
+class OnScreenKeyboard extends react_1.default.Component {
+    constructor(props) {
+        super(props);
+        this.toggleCapsLock = () => {
+            const { capsLockOn } = this.state;
+            this.setState({
                 capsLockOn: !capsLockOn,
             });
         };
-        _this.renderRow = function (row) {
-            var _a = _this.props, onPress = _a.onPress, submitText = _a.submitText, input = _a.input, onSubmit = _a.onSubmit;
-            var _b = _this.state, capsLockOn = _b.capsLockOn, keyValues = _b.keyValues;
-            var rowLayout = row.map(function (key) {
-                var value = keyValues[key];
+        this.renderRow = (row) => {
+            const { onPress, submitText, input, onSubmit } = this.props;
+            const { capsLockOn, keyValues } = this.state;
+            const rowLayout = row.map((key) => {
+                let value = keyValues[key];
                 if (key === 'spcl_submit') {
                     value = submitText || value;
                 }
-                return (<react_native_1.TouchableOpacity onPress={function () {
+                return (<react_native_1.TouchableOpacity onPress={() => {
                     if (key.indexOf('spcl_') === 0) {
                         if (key === 'spcl_shift') {
-                            _this.toggleCapsLock();
+                            this.toggleCapsLock();
                         }
                         else if (key.toLowerCase() === 'spcl_back') {
                             onPress(input.substring(0, input.length - 1));
@@ -78,21 +64,19 @@ var OnScreenKeyboard = /** @class */ (function (_super) {
                 {rowLayout}
             </react_native_1.View>);
         };
-        _this.state = {
+        this.state = {
             capsLockOn: false,
             keyValues: languages_1.default('en')
         };
-        return _this;
     }
-    OnScreenKeyboard.prototype.render = function () {
-        var keyboardLayout = keys.map(this.renderRow);
+    render() {
+        const keyboardLayout = keys.map(this.renderRow);
         return (<react_native_1.View style={styles.containerStyle}>
                 <react_native_1.View style={{ flex: 1 }}/>
                 <react_native_1.View style={{ paddingHorizontal: 5, paddingBottom: 5 }}>
                     {keyboardLayout}
                 </react_native_1.View>
             </react_native_1.View>);
-    };
-    return OnScreenKeyboard;
-}(react_1.default.Component));
-exports.OnScreenKeyboard = OnScreenKeyboard;
+    }
+}
+exports.default = OnScreenKeyboard;

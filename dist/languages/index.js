@@ -1,5 +1,5 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.default = (function (langCode) {
+exports.default = (langCode) => {
     return require('./' + langCode);
-});
+};
