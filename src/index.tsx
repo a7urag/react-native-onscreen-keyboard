@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import {
     View, Text, TouchableOpacity
 } from 'react-native';
@@ -8,15 +8,10 @@ import getValuesByLanguage from './languages';
 
 const keys = [
     ['numeric_1', 'numeric_2', 'numeric_3', 'numeric_4', 'numeric_5', 'numeric_6', 'numeric_7', 'numeric_8', 'numeric_9', 'numeric_0'],
-    // ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'],
     ['row1_0', 'row1_1', 'row1_2', 'row1_3', 'row1_4', 'row1_5', 'row1_6', 'row1_7', 'row1_8', 'row1_9'],
-    // ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p'],
     ['row2_0', 'row2_1', 'row2_2', 'row2_3', 'row2_4', 'row2_5', 'row2_6', 'row2_7', 'row2_8'],
-    // ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l'],
     ['spcl_shift','row3_0', 'row3_1', 'row3_2', 'row3_3', 'row3_4', 'row3_5', 'row3_6', 'row3_7', 'spcl_back'],
-    // ['shift', 'z', 'x', 'c', 'v', 'b', 'n', 'm', 'back'],
     ['spcl_0', 'spcl_1', 'spcl_space', 'spcl_2', 'spcl_submit'],
-    // ['@', ',', 'space', '.', 'submit'],
 ];
 
 export interface Props {
@@ -37,7 +32,7 @@ interface KeyValue {
 
 let styles = stylesLightAndroid;
 
-export default class OnScreenKeyboard extends React.Component<Props, State> {
+class OnScreenKeyboard extends React.Component<Props, State> {
     constructor(props: Props) {
         super(props);
         this.state = {
@@ -65,6 +60,7 @@ export default class OnScreenKeyboard extends React.Component<Props, State> {
             }
             return (
                 <TouchableOpacity
+                    key={'key-'+key}
                     onPress={() => {
                         if (key.indexOf('spcl_') === 0) {
                             if (key === 'spcl_shift') {
@@ -88,7 +84,9 @@ export default class OnScreenKeyboard extends React.Component<Props, State> {
         });
 
         return (
-            <View style={styles.keyRowStyle}>
+            <View
+                style={styles.keyRowStyle}
+                key={'row-'+row[0]}>
                 {rowLayout}
             </View>
         );
@@ -106,3 +104,4 @@ export default class OnScreenKeyboard extends React.Component<Props, State> {
         );
     }
 }
+export default OnScreenKeyboard;
